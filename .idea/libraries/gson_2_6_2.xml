@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="gson-2.6.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/OpenData-master/lib/gson-2.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/OpenData-master/lib/jersey-bundle-1.19.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/OpenData-master/lib/mysql-connector-java-8.0.27.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
