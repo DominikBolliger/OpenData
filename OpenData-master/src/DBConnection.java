@@ -65,9 +65,10 @@ public class DBConnection {
     public int checkIfBetriebstagExists(String betriebstag) {
         int ret = -1;
         try {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("Select `betriebstag_id` from `opendata`.`betriebstag` where `betriebstag` =  " + betriebstag + "");
-
+            String sql = "Select `betriebstag_id` from `opendata`.`betriebstag` where `betriebstag` = ?";
+            PreparedStatement prepareStatement = con.prepareStatement(sql);
+            prepareStatement.setString(1, betriebstag);
+            ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
                 ret = rs.getInt("betriebstag_id");
             }
@@ -169,6 +170,5 @@ public class DBConnection {
             System.out.println("betreriber_nr_pk = " + betreiber_nr_pk + " betriebstagID = " + betriebstagID + " haltestelleID = " + haltestelleID);
             e.printStackTrace();
         }
-
     }
 }

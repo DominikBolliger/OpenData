@@ -26,6 +26,5 @@ public class OpenData {
                     trafficLine.lod(), betriebstagID, betreiber_nr_pk, haltestelleID);
             con.close();
         }
-
     }
 }
