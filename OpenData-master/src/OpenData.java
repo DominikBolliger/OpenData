@@ -19,11 +19,8 @@ public class OpenData {
             if (betriebstagID == -1){
                 betriebstagID = con.createBetriebstagData(trafficLine.betriebstag());
             }
-            con.createFahrtData(trafficLine.produkt_id(), trafficLine.linien_id(), trafficLine.verkehrsmittel_text(),
-                    trafficLine.linien_text(), trafficLine.ankunftszeit(), trafficLine.an_prognose_status(), trafficLine.an_prognose(),
-                    trafficLine.ankunftsverspatung(), trafficLine.abfahrtszeit(), trafficLine.ab_prognose(), trafficLine.ab_prognose_status(),
-                    trafficLine.faellt_aus_tf(), trafficLine.zusatzfahrt_tf(), trafficLine.durchfahrt_tf(), trafficLine.fahrt_bezeichner(),
-                    trafficLine.lod(), betriebstagID, betreiber_nr_pk, haltestelleID);
+            con.createFahrtData(trafficLine.linien_text(), trafficLine.ankunftszeit(), trafficLine.ankunftsverspatung(), trafficLine.abfahrtszeit(),
+                    trafficLine.faellt_aus_tf(), betriebstagID, betreiber_nr_pk, haltestelleID);
             con.close();
         }
     }

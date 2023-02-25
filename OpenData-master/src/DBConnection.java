@@ -138,36 +138,23 @@ public class DBConnection {
         return ret;
     }
 
-    public void createFahrtData(String produkt_id, String linien_id, String verkehrsmittel_text, String linien_text, String ankunftszeit, String an_prognose_status,
-                                String an_prognose, boolean ankunftsverspatung, String abfahrtszeit, String ab_prognose, String ab_prognose_status, boolean faellt_aus_tf,
-                                boolean zusatzfahrt_tf, boolean durchfahrt_tf, String fahrt_bezeichner, String lod, int betriebstagID, int betreiber_nr_pk, int haltestelleID) {
+    public void createFahrtData(String linien_text, String ankunftszeit, boolean ankunftsverspatung, String abfahrtszeit, boolean faellt_aus_tf,
+                                int betriebstagID, int betreiber_nr_pk, int haltestelleID) {
         try {
-            String sql = "INSERT INTO `opendata`.`fahrt` (`produkt_id`, `linien_id`, `verkehrsmittel_text`, `linien_text`, `ankunftszeit`," +
-                    "`an_prognose_status`, `an_prognose`, `ankunftsverspatung`, `abfahrtszeit`, `ab_prognose`, `ab_prognose_status`, `faellt_aus_tf`," +
-                    "`zusatzfahrt_tf`, `durchfahrt_tf`, `fahrt_bezeichner`, `lod`, `betreibstag_nr_fk`, `betreiber_nr_pk_fk`, `haltestelle_id_fk`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO `opendata`.`fahrt` (`linien_text`, `ankunftszeit`," +
+                    "`ankunftsverspatung`, `abfahrtszeit`, `faellt_aus_tf`," +
+                    "`betreibstag_nr_fk`, `betreiber_nr_pk_fk`, `haltestelle_id_fk`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement prepareStatement = con.prepareStatement(sql);
-            prepareStatement.setString(1, produkt_id);
-            prepareStatement.setString(2, linien_id);
-            prepareStatement.setString(3, verkehrsmittel_text);
-            prepareStatement.setString(4, linien_text);
-            prepareStatement.setString(5, ankunftszeit);
-            prepareStatement.setString(6, an_prognose_status);
-            prepareStatement.setString(7, an_prognose);
-            prepareStatement.setInt(8, ankunftsverspatung ? 1 : 0);
-            prepareStatement.setString(9, abfahrtszeit);
-            prepareStatement.setString(10, ab_prognose);
-            prepareStatement.setString(11, ab_prognose_status);
-            prepareStatement.setInt(12, faellt_aus_tf ? 1 : 0);
-            prepareStatement.setInt(13, zusatzfahrt_tf ? 1 : 0);
-            prepareStatement.setInt(14, durchfahrt_tf ? 1 : 0);
-            prepareStatement.setString(15, fahrt_bezeichner);
-            prepareStatement.setString(16, lod);
-            prepareStatement.setInt(17, betriebstagID);
-            prepareStatement.setInt(18, betreiber_nr_pk);
-            prepareStatement.setInt(19, haltestelleID);
+            prepareStatement.setString(1, linien_text);
+            prepareStatement.setString(2, ankunftszeit);
+            prepareStatement.setInt(3, ankunftsverspatung ? 1 : 0);
+            prepareStatement.setString(4, abfahrtszeit);
+            prepareStatement.setInt(5, faellt_aus_tf ? 1 : 0);
+            prepareStatement.setInt(6, betriebstagID);
+            prepareStatement.setInt(7, betreiber_nr_pk);
+            prepareStatement.setInt(8, haltestelleID);
             prepareStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("betreriber_nr_pk = " + betreiber_nr_pk + " betriebstagID = " + betriebstagID + " haltestelleID = " + haltestelleID);
             e.printStackTrace();
         }
     }
